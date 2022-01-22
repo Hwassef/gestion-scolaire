@@ -13,6 +13,8 @@ class DepartmentAdmin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = "admins_department";
+
     /**
      * The attributes that are mass assignable.
      *

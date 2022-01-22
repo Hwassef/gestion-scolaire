@@ -33,7 +33,7 @@
             </tbody>
         </table>
 
-        <form action="" method="POST" id="addDepartmentAdmin" style="display: none; transition-timing-function: ease-in;" class="hide">
+        <form action="{{route('admin.addDeoartmentAdmin')}}" method="POST" id="addDepartmentAdmin" style="display: none; transition-timing-function: ease-in;" class="hide">
             @csrf
             <div class="row">
                 <div class="col-4">
@@ -48,11 +48,11 @@
                     <label for="department">Department</label>
                 </div>
                 <div class="col">
-                    <select class="selectpicker">
-                        <option>Informatique</option>
-                        <option>Gestion</option>
-                        <option>Mecanique</option>
-                        <option>Electrique</option>
+                    <select class="selectpicker" name="department">
+                        <option value="informatique">Informatique</option>
+                        <option value="gestion">Gestion</option>
+                        <option value="mecanique">Mecanique</option>
+                        <option value="electrique">Electrique</option>
                     </select>
                 </div>
             </div>
