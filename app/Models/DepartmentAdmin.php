@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\NewDepartmentAdminEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -31,5 +32,14 @@ class DepartmentAdmin extends Authenticatable
      */
     protected $hidden = [
         'password',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => NewDepartmentAdminEvent::class,
     ];
 }

@@ -26,6 +26,6 @@ class SendLoginInformationListener
      */
     public function handle(NewDepartmentAdminEvent $event)
     {
-        //
+        dd($event -> departmentAdmin);
     }
 }

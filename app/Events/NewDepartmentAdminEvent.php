@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\DepartmentAdmin;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,16 @@ class NewDepartmentAdminEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $departmentAdmin;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(DepartmentAdmin $departmentAdmin)
     {
-        //
+        $this -> departmentAdmin = $departmentAdmin;
     }
 
     /**
