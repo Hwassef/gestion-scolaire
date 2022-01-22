@@ -12,7 +12,17 @@
 
 <body>
     <div class="container">
-        Welcome To Department Admin Dashboard !
+        <div class="d-flex flex-row border-0">
+            <div class="card">
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.manageClassesList')}}" id="">Manage Classes List</a></div>
+            </div>
+            <div class="card">
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.manageProfessorsList')}}" id="">Manage Professors List</a></div>
+            </div>
+            <div class="card">
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.manageSubjectsList')}}" id="">Manage Subjects List</a></div>
+            </div>
+        </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

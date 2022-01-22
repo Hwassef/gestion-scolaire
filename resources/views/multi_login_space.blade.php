@@ -91,7 +91,8 @@
                     </div>
                 </form>
                 <!-- Department Admin Login Form -->
-                <form action="" method="post" class="mt-5" id="departmentAdminLoginForm" style="display: none;">
+                <form action="{{route('departmentadmin.login')}}" method="post" class="mt-5" id="departmentAdminLoginForm" style="display: none;">
+                    @csrf
                     <h4>Department Admin Login Form</h4>
                     <div class="row mt-5">
                         <div class="col">
