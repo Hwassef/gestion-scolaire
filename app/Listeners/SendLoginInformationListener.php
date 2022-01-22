@@ -5,7 +5,8 @@ namespace App\Listeners;
 use App\Events\NewDepartmentAdminEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DeprtmentAdminLoginInfoEmail;
 class SendLoginInformationListener
 {
     /**
@@ -26,6 +27,6 @@ class SendLoginInformationListener
      */
     public function handle(NewDepartmentAdminEvent $event)
     {
-        dd($event -> departmentAdmin);
+        Mail::to($event->departmentAdmin->email)->send(new DeprtmentAdminLoginInfoEmail($event->departmentAdmin));
     }
 }

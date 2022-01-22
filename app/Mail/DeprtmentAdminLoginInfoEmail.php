@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\DepartmentAdmin;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,14 +12,15 @@ class DeprtmentAdminLoginInfoEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $departmentAdmin;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(DepartmentAdmin $departmentAdmin)
     {
-        //
+        $this -> departmentAdmin = $departmentAdmin;
     }
 
     /**
