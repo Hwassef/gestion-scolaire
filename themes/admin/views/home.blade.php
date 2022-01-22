@@ -1,16 +1,25 @@
-@include('layouts.app')
-<x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800">
-        {{ __('Dashboard') }}
-    </h2>
-</x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="py-12">
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
-                You're logged in!
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={{ asset('css/app.css') }}>
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="#">Manage Department Admin</a>
+                </div>
             </div>
-        </div>
+        </nav>
     </div>
-</div>
+    <script src="{{ asset('js/app.js') }}"></script>
+</body>
+
+</html>
