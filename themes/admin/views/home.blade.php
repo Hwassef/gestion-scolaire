@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#">Manage Department Admin</a>
+                    <a class="nav-item nav-link" href="{{route('admin.displayMangeDepartmentAdmin')}}">Manage Department Admin</a>
                 </div>
             </div>
         </nav>
