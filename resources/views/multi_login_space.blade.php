@@ -65,7 +65,8 @@
                 </form>
 
                 <!-- Professor Login Form -->
-                <form action="" method="post" class="mt-5" id="professorLoginForm" style="display: none;">
+                <form action="{{route('professor.login')}}" method="post" class="mt-5" id="professorLoginForm" style="display: none;">
+                    @csrf
                     <h4>Professor Login Form</h4>
                     <div class="row mt-5">
                         <div class="col">

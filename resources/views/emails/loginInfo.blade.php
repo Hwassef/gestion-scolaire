@@ -1,14 +1,7 @@
 @component('mail::message')
-# Gestion Scoalire
-Welcome {{$departmentAdmin -> full_name}} ,
+# Introduction
 
-
-Your login information:
-
-
-    Email: {{$departmentAdmin -> email}}
-
-    Password: {{$departmentAdmin -> password}}
+The body of your message.
 
 @component('mail::button', ['url' => ''])
 Button Text

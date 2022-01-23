@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Classes List</title>
+    <title>Manage Students</title>
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
     @notifyCss
@@ -20,44 +20,68 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <div class="container">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-primary rounded-pill" id="showForm"><i class="fas fa-user-plus fa-1x"></i> Add New Class</button>
+            <button class="btn btn-primary rounded-pill" id="showForm"><i class="fas fa-user-plus fa-1x"></i> Add New Student</button>
         </div>
         <table class="table table-hover">
             <thead>
                 <th scope="col">#</th>
-                <th scope="col">Class Name</th>
-                <th scope="col">Level</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Department</th>
+                <th scope="col">Classe</th>
             </thead>
             <tbody>
-                @foreach($classes as $classe)
+                @foreach($students as $student)
                 <tr>
                     <th>{{$counter += 1}}</th>
-                    <td>{{$classe -> class_name}}</td>
-                    <td>{{$classe -> level}}</td>
+                    <td>{{$student -> full_name}}</td>
+                    <td>{{$student -> email}}</td>
+                    <td>{{$student -> department}}</td>
+                    <td>{{$student -> classe}}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <form action="{{route('departmentadmin.addClasse')}}" method="POST" id="addClass" style="display: none; transition-timing-function: ease-in;" class="hide">
+        <form action="{{route('departmentadmin.addStudent')}}" method="POST" id="addStudent" style="display: none; transition-timing-function: ease-in;" class="hide">
             @csrf
             <div class="row">
                 <div class="col-4">
-                    <label for="class_name">Class Name</label>
+                    <label for="class_name">Full Name</label>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="class_name" placeholder="Enter Class Name">
+                    <input type="text" class="form-control" name="full_name" placeholder="Enter Student Full Name">
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-4">
-                    <label for="department">Level</label>
+                    <label for="class_name">E-mail</label>
                 </div>
                 <div class="col">
-                    <select class="selectpicker show-tick" name="level">
-                        <option value="L1">L1</option>
-                        <option value="L2">L2</option>
-                        <option value="L3">L3</option>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Student E-mail">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4">
+                    <label for="department">Department</label>
+                </div>
+                <div class="col">
+                    <select class="selectpicker show-tick" name="department">
+                        <option value={{Auth::guard('admins_department')->user()->department}}>{{Auth::guard('admins_department')->user()->department}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4">
+                    <label for="classe">Classe : </label>
+                </div>
+                <div class="col">
+                    <select class="selectpicker show-tick" name="classe">
+                        @foreach($classes as $classe)
+                        @if($classe -> department = 'Informatique')
+                        <option value={{$classe -> class_name}}>{{$classe -> class_name}}</option>
+                        @endif
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -73,7 +97,7 @@
     <script>
         $(document).ready(function() {
             $('#showForm').on('click', function() {
-                $('#addClass').css('display', 'block').animate();
+                $('#addStudent').css('display', 'block').animate();
             });
         })
     </script>

@@ -22,6 +22,12 @@
             <div class="card">
                 <div class="card-header p-2"> <a href="{{route('departmentadmin.manageSubjectsList')}}" id="">Manage Subjects List</a></div>
             </div>
+            <div class="card">
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.displayClassesList')}}" id="">Manage Notes For Each Class</a></div>
+            </div>
+            <div class="card">
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.addStudents')}}" id="">Add Students</a></div>
+            </div>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

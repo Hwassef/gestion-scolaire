@@ -8,6 +8,7 @@
     <title>Manage Classes List</title>
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
+    @notifyCss
 
 </head>
 
@@ -33,33 +34,31 @@
             </tbody>
         </table>
 
-        <form action="" method="POST" id="addProfessor" style="display: none; transition-timing-function: ease-in;" class="hide">
+        <form action="{{route('departmentadmin.addProfessor')}}" method="POST" id="addProfessor" style="display: none; transition-timing-function: ease-in;" class="hide">
             @csrf
             <h4>Add New Professor</h4>
             <div class="row">
                 <div class="col-4">
-                    <label for="class_name">Full Name</label>
+                    <label for="full_name">Full Name</label>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="class_name" placeholder="Enter Class Name">
+                    <input type="text" class="form-control" name="full_name" placeholder="Enter Professor Name">
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-4">
-                    <label for="department">Level</label>
+                    <label for="email">E-mail</label>
                 </div>
                 <div class="col">
-                    <select class="selectpicker show-tick" name="level">
-                        <option value="L1">L1</option>
-                        <option value="L2">L2</option>
-                        <option value="L3">L3</option>
-                    </select>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Professor E-mail">
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3 mb-5">
                 <button type="submit" class="btn btn-success" style="width: 110px;"><i class="fas fa-plus-circle"></i> Save</button>
             </div>
         </form>
+        <x:notify-messages />
+        @notifyJs
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>

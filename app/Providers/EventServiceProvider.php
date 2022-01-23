@@ -21,6 +21,14 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewDepartmentAdminEvent' => [
             'App\Listeners\SendLoginInformationListener',
         ],
+
+        'App\Events\NewProfessorEvent' => [
+            'App\Listeners\SendProfessorLoginInformationListener',
+        ],
+
+        'App\Events\NewStudentEvent' => [
+            'App\Listeners\SendStudentLoginInformationListener',
+        ],
     ];
 
     /**
