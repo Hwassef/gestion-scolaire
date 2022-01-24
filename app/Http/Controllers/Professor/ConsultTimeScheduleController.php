@@ -12,6 +12,6 @@ class ConsultTimeScheduleController extends Controller
     {
         $timeSchedule = ProfessorTimeSchedule::where('professor_id', Auth::guard('professor')->user()->id)->first();
         $timeScheduleFileName = $timeSchedule-> file_name;
-        return view ('professor.home', compact('timeScheduleFileName'));
+        return view ('professor.time_schedule', compact('timeScheduleFileName'));
     }
 }

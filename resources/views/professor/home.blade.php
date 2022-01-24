@@ -16,7 +16,7 @@
                 <div class="card-header p-2"> <a href="{{route('professor.ClassesList')}}" id="">Add Course</a></div>
             </div>
             <div class="card">
-                <div class="card-header p-2"> <a href="{{asset('storage/'.$timeScheduleFileName ) }}" target="_blank">Consult Time Schedule</a></div>
+                <div class="card-header p-2"> <a href="{{route('professor.displayTimeSchedule')}}" target="_blank">Consult Time Schedule</a></div>
             </div>
         </div>
     </div>

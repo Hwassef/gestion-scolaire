@@ -23,7 +23,6 @@ class ConsultNotesController extends Controller
         $cleanClassName     = str_replace(".", "_", Auth::guard('student')->user()->classe);
         $finalSubjectNotesTableName = $clenSubjectName."_".$cleanClassName."_notes";
         $note = DB::table($finalSubjectNotesTableName)->where('student_id', Auth::guard('student')->user()->id)->first();
-        dd($finalSubjectNotesTableName);
         return view('student.subject_note', compact('note'));
     }
 }
