@@ -13,10 +13,13 @@
     <div class="container mt-5">
         <div class="d-flex flex-row border-0 justify-content-center">
             <div class="card">
-                <div class="card-header p-2"> <a href="{{route('professor.ClassesList')}}" id="">Add Course</a></div>
+                <div class="card-header p-2"> <a href="{{route('student.displaySubjectsList')}}" id="">Consult Courses</a></div>
             </div>
             <div class="card">
                 <div class="card-header p-2"> <a href="{{asset('storage/'.$timeScheduleFileName ) }}" target="_blank">Consult Time Schedule</a></div>
+            </div>
+            <div class="card">
+                <div class="card-header p-2"> <a href="{{route('student.displaySubjectsListForNotes')}}" >Consult Notes</a></div>
             </div>
         </div>
     </div>

@@ -38,8 +38,9 @@
                     </div>
                 </div>
                 <!-- Student Login Form -->
-                <form action="" method="post" class="mt-5" id="studentLoginForm">
+                <form action="{{route('student.login')}}" method="post" class="mt-5" id="studentLoginForm">
                     <h4>Student Login Form</h4>
+                    @csrf
                     <div class="row mt-5">
                         <div class="col">
                             <label for="">E-mail: </label>
