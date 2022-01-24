@@ -72,6 +72,7 @@ class MnageNotesForEachClass extends Controller
     public function submitNotes($id, $subjectName)
     {
         $classe = Classe::where('id', $id)->first();
+        $subject = Subject::where('subject_name', $subjectName)->where('class_id', $id)->first();
         $cleanClassName = str_replace(".", "_", $classe->class_name);
         $cleanSubjectName = str_replace(" ", "_", $subjectName);
         $finalNotesTableName = $cleanSubjectName . "_" . $cleanClassName . "_notes";
@@ -93,6 +94,22 @@ class MnageNotesForEachClass extends Controller
             $table->string('note');
             $table->timestamps();
         });
+
+        for ($i = 0; $i<count(Request()->note);$i++)
+        {
+            $student = Student::where('id', Request() -> studentId[$i])->first();
+            DB::table($finalNotesTableName)->insert(
+                array(
+                    'class_id'        =>   $id,
+                    'subject_id'      =>   $subject  -> id,
+                    'student_id'      =>   Request() -> studentId[$i],
+                    'class_name'      =>   $classe   -> class_name,
+                    'subject_name'    =>   $subjectName,
+                    'student_name'    =>   $student  -> full_name,
+                    'note'            =>   Request() -> note[$i],
+                )
+            );
+        }
         notify()->success('Notes Added Succesfully !');
         return Redirect::back();
     }

@@ -16,3 +16,13 @@ Route::post('/department_admin/classes_list/{id}/{subjectName}', [App\Http\Contr
 Route::post('/department_admin/classes_list/{id}/{subjectName}/generate', [App\Http\Controllers\DepartmentAdmin\MnageNotesForEachClass::class, 'generateCode'])->name('departmentadmin.generateCode');
 Route::get('/department_admin/add_student', [App\Http\Controllers\DepartmentAdmin\ManageStudentsController::class, 'index'])->name('departmentadmin.addStudents');
 Route::post('/department_admin/add_student', [App\Http\Controllers\DepartmentAdmin\ManageStudentsController::class, 'addStudent'])->name('departmentadmin.addStudent');
+Route::get('/department_admin/add_time_schedule', [App\Http\Controllers\DepartmentAdmin\TimeScheduleController::class, 'index'])->name('departmentadmin.displayAddTimeSchedule');
+Route::get('/department_admin/add_time_schedule/{id}', [App\Http\Controllers\DepartmentAdmin\TimeScheduleController::class, 'displayAddSchedule'])->name('departmentadmin.displayAddSchedule');
+Route::post('/department_admin/add_time_schedule/{id}', [App\Http\Controllers\DepartmentAdmin\TimeScheduleController::class, 'addTimeSchedule'])->name('departmentadmin.addTimeSchedule');
+Route::get('/department_admin/upload_time_schedule', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'chooseType'])->name('departmentadmin.chooseType');
+Route::get('/department_admin/upload_time_schedule/professors_list', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'professorsList'])->name('departmentadmin.professorsList');
+Route::get('/department_admin/upload_time_schedule/professors_list/{id}', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'displayAddProfessorTimeSchedule'])->name('departmentadmin.displayAddProfessorTimeSchedule');
+Route::post('/department_admin/upload_time_schedule/professors_list/{id}', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'addProfessorTimeSchedule'])->name('departmentadmin.addProfessorTimeSchedule');
+Route::get('/department_admin/upload_time_schedule/classes_list', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'classesList'])->name('departmentadmin.classesList');
+Route::get('/department_admin/upload_time_schedule/classes_list/{id}', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'displayAddClasseTimeSchedule'])->name('departmentadmin.displayAddClasseTimeSchedule');
+Route::post('/department_admin/upload_time_schedule/classes_list/{id}', [App\Http\Controllers\DepartmentAdmin\UploadTimeScheduleController::class, 'addClassTimeSchedule'])->name('departmentadmin.addClassTimeSchedule');

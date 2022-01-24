@@ -13,10 +13,11 @@ class ManageSubjectsController extends Controller
 {
     public function index()
     {
+        $counter = 0;
         $classes = Classe::all();
         $professors = Professor::all();
         $subjects = Subject::all();
-        return view('departmentadmin.manage_subjects_list', compact('classes', 'professors', 'subjects'));
+        return view('departmentadmin.manage_subjects_list', compact('classes', 'professors', 'subjects', 'counter'));
     }
 
     public function store(Request $request)

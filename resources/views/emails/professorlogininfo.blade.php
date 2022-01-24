@@ -8,7 +8,7 @@ Your login information:
 
     Email: {{$professor -> email}}
 
-    Password: {{$professor -> password}}
+    Password: {{$professor -> bla}}
 
 @component('mail::button', ['url' => ''])
 Button Text

@@ -11,12 +11,13 @@
 
 <body>
     <div class="container mt-5">
-        <div class="d-flex flex-row border-0 justify-content-center">
+        <h3 class="text-center">Upload For: </h3>
+        <div class="d-flex flex-row border-0 justify-content-center mt-5">
             <div class="card">
-                <div class="card-header p-2"> <a href="{{route('professor.ClassesList')}}" id="">Add Course</a></div>
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.classesList')}}" id="">Classes</a></div>
             </div>
             <div class="card">
-                <div class="card-header p-2"> <a href="{{route('departmentadmin.manageProfessorsList')}}" id="">Consult Time Schedule</a></div>
+                <div class="card-header p-2"> <a href="{{route('departmentadmin.professorsList')}}" id="">Professors</a></div>
             </div>
         </div>
     </div>

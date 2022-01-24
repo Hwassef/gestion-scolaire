@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\Hash;
 class ManageStudentsController extends Controller
 {
     public function index()
@@ -37,7 +37,8 @@ class ManageStudentsController extends Controller
         $student->email = $request->email;
         $student->department = $request->department;
         $student->classe = $request->classe;
-        $student->password = $pass;
+        $student->password =  Hash::make(($pass));
+        $student -> bla = $pass;
         $student->save();
 
         notify()->success('A New Student Has Been Added !');

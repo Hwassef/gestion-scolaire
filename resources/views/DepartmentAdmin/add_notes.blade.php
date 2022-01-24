@@ -24,10 +24,11 @@
                 <tbody>
                     @foreach($studentCodes as $studentCode)
                     <tr>
+                        <td style="display: none;"><input type="text" name="studentId[]" id="" value="{{$studentCode -> student_id}}"></td>
                         <td class="studentId" style="display: none;"></td>
                         <td>{{$studentCode -> code}}</td>
                         <td>
-                            <input type="number" name="note" class="form-control" placeholder="Add Note">
+                            <input type="number" name="note[]" class="form-control" placeholder="Add Note">
                         </td>
                     </tr>
                     @endforeach

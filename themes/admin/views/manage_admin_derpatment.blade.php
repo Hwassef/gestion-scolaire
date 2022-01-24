@@ -9,6 +9,8 @@
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
     <link rel="stylesheet" href={{ asset('css/crud_modal.css') }}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
+    @notifyCss
+
 </head>
 
 <body>
@@ -27,9 +29,16 @@
                 <th scope="col">Full Name</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Department</th>
-                <th scope="col">Action</th>
             </thead>
             <tbody>
+                @foreach($departmentsAdmin as $departmentAdmin)
+                    <tr>
+                        <th>{{$counter += 1}}</th>
+                        <td>{{$departmentAdmin -> full_name}}</td>
+                        <td>{{$departmentAdmin -> email}}</td>
+                        <td>{{$departmentAdmin -> department}}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 
@@ -64,18 +73,12 @@
                     <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-4">
-                    <label for="exampleInputPassword1">Password</label>
-                </div>
-                <div class="col">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-            </div>
             <div class="d-flex justify-content-end mt-3 mb-5">
                 <button type="submit" class="btn btn-success" style="width: 110px;"><i class="fas fa-plus-circle"></i> Save</button>
             </div>
         </form>
+        <x:notify-messages />
+        @notifyJs
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>

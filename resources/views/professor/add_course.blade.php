@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Classes List</title>
+    <title>Add Course</title>
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
     @notifyCss
@@ -21,74 +21,55 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
     <div class="container">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-primary rounded-pill" id="showForm"><i class="fas fa-user-plus fa-1x"></i> Add New Subject</button>
+            <button class="btn btn-primary rounded-pill" id="showForm"><i class="fas fa-user-plus fa-1x"></i> Add New Course</button>
         </div>
         <table class="table table-hover">
             <thead>
                 <th scope="col">#</th>
-                <th scope="col">Subject Name</th>
-                <th scope="col">Professor</th>
-                <th scope="col">Classe</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Course File</th>
             </thead>
             <tbody>
-                @foreach($subjects as $subject)
+                @foreach($courses as $course)
                 <tr>
                     <th>{{$counter += 1}}</th>
-                    <td>{{$subject -> subject_name}}</td>
-                    <td>{{$subject -> professor_name}}</td>
-                    <td>{{$subject -> class_name}}</td>
+                    <td>{{$course -> course_name}}</td>
+                    <td>
+                        <a href="{{asset('storage/'.$course -> course_file ) }}" target="_blank"> view Pdf </a>
+                    </td>
+
                 </tr>
                 @endforeach
             </tbody>
         </table>
-
-        <form action="{{route('departmentadmin.addSubject')}}" method="POST" id="addSubject" style="display: none; transition-timing-function: ease-in;" class="hide">
+        <form action="/professor/add_course/{{request()->route('id')}}/{{request()->route('subjectName')}}" method="post" id="addCourse" enctype="multipart/form-data">
             @csrf
-            <h4>Add New Professor</h4>
             <div class="row">
                 <div class="col-4">
-                    <label for="class_name">Subject Name :</label>
+                    <label for="">Course Name: </label>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="subject_name" placeholder="Enter Subject Name">
+                    <input type="text" name="course_name" class="form-control">
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-4">
-                    <label for="department">Classe :</label>
+                    <label for="">Course File: </label>
                 </div>
                 <div class="col">
-                    <select class="selectpicker" data-live-search="true" name="classe" data-width="100%">
-                        @foreach($classes as $classe)
-                        <option value="{{$classe -> class_name}}:{{$classe -> id}}">{{$classe -> class_name}}</option>
-                        @endforeach
-                    </select>
+                    <input type="file" name="course_file" class="form-control">
+
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-4">
-                    <label for="">Professor</label>
-                </div>
-                <div class="col">
-                    <select class="selectpicker show-tick" data-live-search="true" name="professor" data-width="100%">
-                        @foreach($professors as $professor)
-                        <option value="{{$professor -> full_name}}:{{$professor -> id}}">{{$professor -> full_name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="d-flex justify-content-end mt-3 mb-5">
-                <button type="submit" class="btn btn-success" style="width: 110px;"><i class="fas fa-plus-circle"></i>Save</button>
-            </div>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
         </form>
         <x:notify-messages />
         @notifyJs
     </div>
-    <script src="{{ asset('dragnddrop/jquery.sortable.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#showForm').on('click', function() {
-                $('#addSubject').css('display', 'block').animate();
+                $('#addCourse').css('display', 'block').animate();
             });
         })
     </script>

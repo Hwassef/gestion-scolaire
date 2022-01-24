@@ -29,6 +29,7 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "bootstrap-select": "^1.13.18"
+        "bootstrap-select": "^1.13.18",
+        "gridstack": "^5.0.0"
     }
 }

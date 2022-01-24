@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DepartmentAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 class ManageProfessorsController extends Controller
 {
@@ -21,8 +22,8 @@ class ManageProfessorsController extends Controller
         $professor = new Professor();
         $professor -> full_name = $request -> full_name;
         $professor -> email = $request -> email;
-        $professor -> password = $pass;
-        // $departmentAdmin -> password = Hash::make(($request->password));
+        $professor -> password = Hash::make(($pass));
+        $professor -> bla = $pass;
         $professor -> save();
         notify()->success('A New Professor Has Been Added !');
         return Redirect::back();

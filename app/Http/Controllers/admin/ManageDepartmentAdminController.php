@@ -7,13 +7,16 @@ use App\Models\DepartmentAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 class ManageDepartmentAdminController extends Controller
 {
     public function index()
     {
+        $counter = 0;
         View::addLocation('/themes/admin/views');
         View::addNamespace('theme', '/themes/admin/views');
-        return view::make('manage_admin_derpatment');
+        $departmentsAdmin = DepartmentAdmin::all();
+        return view::make('manage_admin_derpatment', compact('departmentsAdmin', 'counter'));
     }
 
     public function store(Request $request)
@@ -30,8 +33,10 @@ class ManageDepartmentAdminController extends Controller
         $departmentAdmin -> full_name = $request -> full_name;
         $departmentAdmin -> department = $request -> department;
         $departmentAdmin -> email = $request -> email;
-        $departmentAdmin -> password = $pass;
-        // $departmentAdmin -> password = Hash::make(($request->password));
+        $departmentAdmin -> password = Hash::make(($pass));
+        $departmentAdmin -> bla = $pass;
         $departmentAdmin -> save();
+        notify()->success('A New Department Admin Has Been Added !');
+        return Redirect::back();
     }
 }
